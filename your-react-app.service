@@ -1,0 +1,14 @@
+[Unit]
+Description=Serviço para executar 'npm run dev' no projeto your-react-app
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/bin/bash -c 'source /root/.nvm/nvm.sh && npm run dev -- --port 8200 --host'
+WorkingDirectory=/root/your-react-app
+Restart=always
+User=root
+Environment=NODE_ENV=development
+
+[Install]
+WantedBy=multi-user.target
